@@ -7,7 +7,7 @@ from routers.orders import router as orders_router
 import uvicorn
 # Initialize the FastAPI application
 app = FastAPI()
-
+# example
 # Include the authentication router
 app.include_router(auth_router, prefix="/auth", tags=["Authentication"])
 
