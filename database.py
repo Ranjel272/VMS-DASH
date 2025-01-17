@@ -1,13 +1,11 @@
 import aioodbc
 
-
 # Connection credentials for the database
 server = 'LAPTOP-8KPHOHE5\\SQLEXPRESS'  
 database_name = 'Vendor_SM'
 username = 'Angel'
 password = 'Angel123'
 driver = 'ODBC Driver 17 for SQL Server'
-
 
 # Function to debug connection
 async def test_connection():

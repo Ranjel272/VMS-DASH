@@ -4,7 +4,7 @@ import database
 import random
 import string
 from typing import Optional
-from routers.auth import get_current_active_user
+from routers.auth import get_current_user
 
 # function to generate barcode
 def generate_barcode():
@@ -18,7 +18,7 @@ def generate_sku():
     sku = ''.join(random.choices(characters, k=8))
     return sku
 
-router = APIRouter(dependencies=[Depends(get_current_active_user)])
+router = APIRouter(dependencies=[Depends(get_current_user)])
 
 # pydantic model for products 
 class Product(BaseModel):

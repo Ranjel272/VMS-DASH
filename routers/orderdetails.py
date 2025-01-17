@@ -23,7 +23,7 @@ class OrderDetails(BaseModel):
 class PurchaseOrder(BaseModel):
     orderID: int
     orderDate: datetime
-    expectedDate: datetime
+    expectedDate: Optional[datetime] = None  
     orderStatus: str
     statusDate: datetime
 
@@ -184,15 +184,15 @@ async def get_pending_orders():
 
         # Convert the results to a list of PurchaseOrder objects
         pending_orders = [
-            PurchaseOrder(
-                orderID=row[0],
-                orderDate=row[1],
-                expectedDate=row[2],
-                orderStatus=row[3],
-                statusDate=row[4],
-            )
-            for row in orders
-        ]
+                PurchaseOrder(
+        orderID=row[0],
+        orderDate=row[1],
+        expectedDate=row[2] if row[2] else None,  # Handle None values
+        orderStatus=row[3],
+        statusDate=row[4],
+    )
+    for row in orders
+]
 
         # Close cursor and connection
         await cursor.close()
